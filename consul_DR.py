@@ -61,7 +61,7 @@ def read_from_file(file_path, consul_path=None):
 
     try:
         f = open(file_path, "r", encoding="utf-8")
-        data = json.load(f).encode('utf-8')
+        data = json.load(f).decode('utf-8')
         f.close()
 
         if consul_path:
