@@ -40,7 +40,7 @@ def process(downloaded_data):
                 continue
 
             if obj['Value']:
-                obj['Value'] = base64.b64decode(obj['Value'])
+                obj['Value'] = base64.b64decode(obj['Value'].encode("utf-8"))
                 obj['Value'] = str(obj['Value'].decode('utf-8'))
 
             result_obj.append(obj)
