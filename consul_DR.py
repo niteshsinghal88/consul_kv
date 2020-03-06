@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-pre-req:
+pre-req::
 ansd yum install python3
 ansd yum install python-requests
 
