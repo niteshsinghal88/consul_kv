@@ -12,7 +12,6 @@ import sys
 import argparse
 import os
 
-
 def download(server, token, consul_path=""):
 
     url = server + "/v1/kv/" + consul_path
@@ -60,14 +59,14 @@ def process(downloaded_data):
 def read_from_file(file_path, consul_path=None):
 
     try:
-        f = open(file_path, "r", encoding="utf-8")
-        data = json.load(f).decode('utf-8')
+        f = open(file_path, "r")
+        data = json.load(f)
         f.close()
 
         if consul_path:
             result_obj = []
             for obj in data:
-                if consul_path in obj['Key'].decode('utf-8'):
+                if consul_path in obj['Key']:
                     result_obj.append(obj)
             data = result_obj
 
@@ -88,7 +87,7 @@ def upload(server, token, data):
 
     for obj in data:
         try:
-            payload = obj['Value']
+            payload = obj['Value'].encode('utf-8')
             url = server + "/v1/kv/" + obj['Key']
 
             response = requests.put(url, data=payload, params=params)
