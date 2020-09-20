@@ -2,7 +2,7 @@
 """
 pre-req::
 ansd yum install python3
-ansd yum install python-requests
+ansd pip3 install python-requests
 
 """
 import json
