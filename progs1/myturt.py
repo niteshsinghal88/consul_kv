@@ -5,6 +5,7 @@ import turtle
 counter = 0
 
 while counter < 36:
+#    turtle.bgcolor("green")
     for i in range(4):
 
         turtle.forward(50)
