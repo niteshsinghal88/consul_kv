@@ -1,0 +1,17 @@
+---
+- hosts: poc1
+  gather_facts: true
+
+  tasks:
+    - name: Stop docker process
+      systemd: name=docker state=stop
+
+    - name: running all commands
+      command: "{{item}}"
+        with_items:
+          - tar -czf /Data/docker.tar.gz /var/lib/docker
+          - mv /var/lib/docker /Data/
+          - ln -s /Data/docker /var/lib/docker
+
+    - name: start docker deamon
+      systemd: name=docker state=started
